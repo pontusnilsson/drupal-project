@@ -14,17 +14,14 @@ class BrowserTest extends BrowserTestBase {
   public static $modules = ['block', 'node', 'datetime'];
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
   protected function setUp() {
 
     parent::setUp();
 
     $this->drupalCreateContentType(['type' => 'page', 'name' => 'Basic page']);
-    $this->user = $this->drupalCreateUser([
-      'edit own page content',
-      'create page content'
-    ]);
+    $this->user = $this->drupalCreateUser(['edit own page content', 'create page content']);
 
     $this->drupalPlaceBlock('local_tasks_block');
   }
@@ -32,7 +29,7 @@ class BrowserTest extends BrowserTestBase {
   /**
    * Test.
    */
-  function testDrupalGet() {
+  public function testDrupalGet() {
     $this->drupalGet('user/register');
 
     $this->assertSession()->pageTextContains('Create new account');
